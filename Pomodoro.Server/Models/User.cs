@@ -3,18 +3,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Pomodoro.Server.Models
 {
-    [Table("user")]
+    [Table(name:"user_detail", Schema="main")]
+  
     public class User
     {
         [Key]
         [Column("user_id")]
-        public int Id { get; set; }
+        public int UserId { get; set; }
 
         [Column("user_name")]
-        public string? UserName { get; set; }
+        public string? UserName { get; set; }= string.Empty;
 
-        [Column("password")]
-        public string? Password { get; set; }
+        public required ICollection<Entry> Entries { get; set; }
+
+        //[Column("password")]
+        //public string? Password { get; set; }
 
     }
 }

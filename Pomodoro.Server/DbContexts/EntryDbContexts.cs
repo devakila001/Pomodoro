@@ -20,10 +20,12 @@ namespace Pomodoro.Server.DbContexts
                    .AddJsonFile("appSettings.json", optional: true)
                    .Build();
 
-            string dbConnString = configurationInstance["ConnectionStrings:EntryDb"] ?? "";
+            string dbConnString = configurationInstance["ConnectionStrings:entryDb"] ?? "";
             optionsBuilder.UseNpgsql(dbConnString);
             base.OnConfiguring(optionsBuilder);
         }
+
+      
 
     }
 }

@@ -1,4 +1,6 @@
 
+using Pomodoro.Server.DbContexts;
+
 namespace Pomodoro.Server
 {
     public class Program
@@ -14,6 +16,14 @@ namespace Pomodoro.Server
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            EntryDbContexts entryDb = new EntryDbContexts();
+            builder.Services.AddSingleton(entryDb);
+
+            //EntryDbContexts entries = new EntryDbContexts();
+            //builder.Services.AddSingleton(entries);
+            //EntryDbContexts users = new EntryDbContexts();
+            //builder.Services.AddSingleton(users);
+
             var app = builder.Build();
 
             app.UseDefaultFiles();
@@ -26,7 +36,7 @@ namespace Pomodoro.Server
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseAuthorization();
 

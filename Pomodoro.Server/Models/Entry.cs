@@ -3,14 +3,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Pomodoro.Server.Models
 {
-    [Table("entry")]
+
+    [Table(name: "entry_info", Schema = "main")]
     public class Entry
     {
         [Key]
-        [Column("id")]
-        public int Id { get; set; }
+        [Column("entry_id")]
+        public int EntryId { get; set; }
         [Column("entry_name")]
-        public string? Name { get; set; }
+        public string? EntryName { get; set; }
 
         [Column("entry_date")]
         public string? Date { get; set; }
@@ -24,6 +25,12 @@ namespace Pomodoro.Server.Models
         public string? Comments { get; set; }
         [Column("total_time")]
         public string? TotalTime { get; set; }
-                
+
+        [ForeignKey("user")]
+        [Column("user_id")]
+        public int UserId { get; set; }
+
+        [Column("user_name")]
+        public string? UserName { get; set; }
     }
 }
