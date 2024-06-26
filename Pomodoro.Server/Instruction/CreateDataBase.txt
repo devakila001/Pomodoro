@@ -1,0 +1,9 @@
+﻿
+"entrydb": "User ID=apentry02;Password=Apentry03;Host=localhost;Port=5432;Database=appomodorodb;Connection Lifetime=0;"
+
+
+CREATE USER apentry02 WITH password 'Apentry03';
+CREATE DATABASE appomodorodb;
+GRANT ALL PRIVILEGES ON DATABASE appomodorodb TO apentry02;
+\c appomodorodb
+GRANT ALL on SCHEMA public to apentry02;

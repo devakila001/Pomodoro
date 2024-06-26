@@ -1,0 +1,72 @@
+
+
+<div>
+  <h1>Pomodoro Time Tracker</h1>
+  <form (ngSubmit)="saveEntry">
+    <div class="row">
+      <div class="col-4">
+
+        <label for="name">Select User Name:</label>
+
+        <select *ngIf="users" [(ngModel)]="storeEntry.userId" name="userId" class="select-user">
+          <option class="option" *ngFor="let user of users" [value]="user.userId">{{user.userName}}</option>
+        </select>
+      </div>
+
+      <div class="col-4">
+        <label for="date">Date:</label>
+        <input type="date" id="date" [(ngModel)]="storeEntry.date" name="date" class="form-control">
+      </div>
+
+      <div class="col-4">
+        <label for="comment">Comment:</label>
+        <textarea id="comment" [(ngModel)]="storeEntry.comment" name="comment" class="form-control"></textarea>
+
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-4">
+        <button type="button" class="btn btn-primary" [disabled]="timerStarted" (click)="startTimer()">Start</button>
+      </div>
+
+      <div class="col-4">
+        <button type="button" class="btn btn-danger" [disabled]="!timerStarted" (click)="stopTimer()">Stop</button>
+      </div>
+
+      <div class="col-4 form-group-running-time" *ngIf="timerStarted">
+        <label for="runningTime">Running Time:</label>
+        <input type="text" id="runningTime" [(ngModel)]="currentTime" name="runningTime" [disabled]="true" class="big-timer">
+      </div>
+    </div>
+  </form>
+
+</div>
+<div *ngIf="users" class="table-container">
+  <h2>Existing Entries</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Developer Name</th>
+        <th>Date</th>
+        <th>Starting Time</th>
+        <th>Ending Time</th>
+        <th>TotalTime</th>
+        <th>Comment</th>
+      
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entry of entries">
+        <td>{{ entry.userName }}</td>
+        <td>{{ entry.date }}</td>
+        <td>{{ entry.startingtime }}</td>
+        <td>{{ entry.endingtime }}</td>
+        <td>{{ entry.totaltime }}</td>
+        <td>{{ entry.comment }}</td>
+        <td>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
