@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -6,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Pomodoro.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate1 : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,14 +36,13 @@ namespace Pomodoro.Server.Migrations
                 {
                     entry_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    entry_name = table.Column<string>(type: "text", nullable: true),
-                    entry_date = table.Column<string>(type: "text", nullable: true),
-                    start_time = table.Column<string>(type: "text", nullable: true),
-                    end_time = table.Column<string>(type: "text", nullable: true),
-                    comments = table.Column<string>(type: "text", nullable: true),
-                    total_time = table.Column<string>(type: "text", nullable: true),
+                    entry_date = table.Column<DateOnly>(type: "date", nullable: false),
+                    start_time = table.Column<string>(type: "text", nullable: false),
+                    end_time = table.Column<string>(type: "text", nullable: false),
+                    total_time = table.Column<string>(type: "text", nullable: false),
+                    comments = table.Column<string>(type: "text", nullable: false),
                     user_id = table.Column<int>(type: "integer", nullable: false),
-                    user_name = table.Column<string>(type: "text", nullable: true)
+                    user_name = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

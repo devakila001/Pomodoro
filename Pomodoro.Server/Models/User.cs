@@ -13,7 +13,6 @@ namespace Pomodoro.Server.Models
 
         [Column("user_name")]
         public string? UserName { get; set; }= string.Empty;
-
         public required ICollection<Entry> Entries { get; set; }
 
         //[Column("password")]

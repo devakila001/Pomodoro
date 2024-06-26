@@ -36,7 +36,7 @@ namespace Pomodoro.Server.Controllers
 
         // POST api/<EntryController>
         [HttpPost]
-        public async Task<IActionResult> AddEntry([FromBody] Entry entry)
+        public async Task<IActionResult> saveEntry([FromBody] Entry entry)
         {
 
             //_entryDbContext.entries.Add(entry);
